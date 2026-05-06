@@ -68,9 +68,9 @@ for p in permutations:
     p['syn_pow_k'] = -1
 
   if len(p['attack_mitigation_pair']) > 2:
-    p['mitigated_attack_type'] = p['attack_mitigation_pair'][2]
+    p['mitigated_attack_type'] = 'mitigated_dns_3'
   else:
-    p['mitigated_attack_type'] = attack_type
+    p['mitigated_attack_type'] = 'mitigated_dns_3'
   p['attack_mitigation_pair'] = '"' + ','.join(p['attack_mitigation_pair']) + '"'
 
   
@@ -103,5 +103,5 @@ for p in permutations:
 
   mitigation = p['mitigation']
   subprocess.run(["{}/inventory_update.sh".format(code_dir)])
-  subprocess.run(["{}/play".format(code_dir), "experiment", "timestamp={} mitigation={}".format(timestamp, mitigation)])
+  subprocess.run(["{}/play".format(code_dir), "experiment_8", "timestamp={} mitigation={}".format(timestamp, mitigation)])
   subprocess.run(["mv", tmp_log_path, "{}/{}/.ansible.log".format(log_dir, timestamp)])
